@@ -1,0 +1,145 @@
+{% extends 'quiz/layout/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+   
+<div class="card">
+    <div class="card-body">
+        <div class="card-header">
+      <h2 class="card-title">{{question.title}}</h2> 
+    </div>
+
+    <div class="d-inline-flex p-2">
+    
+
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-stack-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <desc>Download more icon variants from https://tabler-icons.io/i/stack-2</desc>
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <polyline points="12 4 4 8 12 12 20 8 12 4"></polyline>
+                        <polyline points="4 12 12 16 20 12"></polyline>
+                        <polyline points="4 16 12 20 20 16"></polyline>
+                     </svg>
+
+                    {{question.category}}
+                    
+                </div>  
+                <div class="mx-2">
+                   
+                    
+                </div>  
+                <div class="mx-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon me-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><desc>Download more icon variants from https://tabler-icons.io/i/star</desc><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"></path></svg>
+                    {{question.points}}
+                </div>   
+            </div> 
+    </div>
+    <!-- Card footer -->
+    <div class="card-footer">
+      <a href={% url 'update_question' question.id  %} class="btn btn-primary">Edit</a>
+    </div>
+  </div>
+  <br>
+
+
+
+<h4>Answers</h4>
+  <ul class="list-group">
+    {% for answer in question.answer.all %}
+    <li class="list-group-item d-flex ">
+        <p class="p-0 m-0 flex-grow-1">{{answer.answer_text}}</p>
+      <a href={% url 'update_answer' answer.id %}><span class=" mx-2 badge badge-primary">Edit</span></a>
+      <a href={% url 'delete_answer' answer.id %}><span class=" mx-2 badge badge-danger">Delete</span></a>
+    </li>
+    {% endfor %}
+
+    <li class="list-group-item d-flex ">
+        <form action="{% url 'add_answer' question.id %}" method="post">
+            {%csrf_token%}
+            <div class="form-group">
+                
+                {{answer_form|crispy}}
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Add Answer</button>
+              </div>
+            
+        </form>
+    </li>
+    
+  </ul>
+
+
+  
+
+  {% comment %} <div class="card">
+    <div class="card-body">
+        <div class="card-header">
+      <h2 class="card-title">Answers</h2> 
+    </div>
+                <div class="list-group list-group-flush">
+                    {% for answer in question.answer.all %}
+                    {% if answer.is_right %}
+                    <a href="#" class="list-group-item list-group-item-action active" aria-current="{{a}}">
+                        {{answer.answer_text}}
+                      </a>
+                      <div>
+                      <a href="#" class="btn btn-primary">Edit</a>
+                      </div>
+
+
+                    {% else %}
+                    <a href="#" class="list-group-item list-group-item-action" aria-current="{{a}}">{{answer.answer_text}}</a>
+                    <div>
+                        <a href="#" class="btn btn-primary">Edit</a>
+                        </div>
+                    
+                    
+                    {% endif %}
+                  
+                  {% endfor %}
+                </div>    
+    </div>
+    <!-- Card footer -->
+    <div class="card-footer">
+      <a href="#" class="btn btn-primary">Edit</a>
+    </div>
+  </div> {% endcomment %}
+ 
+
+
+{% endblock %}
+
+
+
+{% comment %} <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-grid-dots" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <desc>Download more icon variants from https://tabler-icons.io/i/grid-dots</desc>
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <circle cx="5" cy="5" r="1"></circle>
+    <circle cx="12" cy="5" r="1"></circle>
+    <circle cx="19" cy="5" r="1"></circle>
+    <circle cx="5" cy="12" r="1"></circle>
+    <circle cx="12" cy="12" r="1"></circle>
+    <circle cx="19" cy="12" r="1"></circle>
+    <circle cx="5" cy="19" r="1"></circle>
+    <circle cx="12" cy="19" r="1"></circle>
+    <circle cx="19" cy="19" r="1"></circle>
+ </svg> {% endcomment %}
+
+ {% comment %} <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <desc>Download more icon variants from https://tabler-icons.io/i/logout</desc>
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
+    <path d="M7 12h14l-3 -3m0 6l3 -3"></path>
+ </svg> {% endcomment %}
+
+
+ {% comment %} <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-login" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <desc>Download more icon variants from https://tabler-icons.io/i/login</desc>
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
+    <path d="M20 12h-13l3 -3m0 6l-3 -3"></path>
+ </svg> {% endcomment %}
+
+
+ 

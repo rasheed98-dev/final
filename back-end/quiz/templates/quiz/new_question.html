@@ -1,0 +1,53 @@
+{% extends 'quiz/layout/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<form action="{% url 'new_question' %}" method="post">
+    {%csrf_token%}
+    {{question_form|crispy }}
+    
+    
+    {{answer_form|crispy}}
+    
+
+
+    
+   
+            
+
+    {% comment %} <div class="form-group mb-3 row">
+      
+      <div class="col">
+        {{question_form.title|as_crispy_field }}
+          
+        
+        
+      </div>
+    </div>
+    <div class="form-group mb-3 row">
+     
+      <div class="col">
+        {{question_form.points|as_crispy_field }}
+        
+      </div>
+    </div> {% endcomment %}
+  
+    
+    <div class="form-footer">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+   
+
+{% comment %} <form action="{% url 'new_question' %}" method="post">
+    {%csrf_token%}
+    {% comment %} {{ question_form.as_p }} {% endcomment %}
+    {% comment %} {{ answer_form.as_p }}   {% endcomment %}
+    
+        
+    
+   
+
+
+{% endblock %}

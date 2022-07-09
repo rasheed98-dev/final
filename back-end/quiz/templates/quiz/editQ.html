@@ -1,0 +1,28 @@
+{% extends 'quiz/layout/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<form action="{% url 'update_question' question_id %}" method="post">
+    {%csrf_token%}
+    
+    
+    
+    {{question_form|crispy}}
+    
+
+  
+    
+    <div class="form-footer">
+      <button type="submit" class="btn btn-primary">Update Question</button>
+    </div>
+  </form>
+   
+
+
+        
+    
+   
+
+
+{% endblock %}

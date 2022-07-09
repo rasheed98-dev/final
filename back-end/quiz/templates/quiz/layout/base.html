@@ -1,0 +1,48 @@
+
+<!doctype html>
+
+<html lang="en">
+{% include 'quiz/includes/header.html' %}
+{% block extra_header %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+{% endblock extra_header %}
+<body class="theme-light">
+<div class="page">
+    {% include 'quiz/includes/sidebar.html' %}
+
+    <div class="page-wrapper">
+        <div class="container-xl">
+            {% block content %}
+            {% endblock content %}
+
+        </div>
+
+
+    </div>
+</div>
+
+{% include 'quiz/includes/scripts.html' %}
+{% block extra_scripts %}
+
+{% endblock extra_scripts %}
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
