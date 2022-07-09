@@ -1,0 +1,70 @@
+.navbar-brand {
+    padding-right: 50px;
+}
+
+.navbar-collapse {
+    padding-left: 750px;
+}
+
+button,
+button::after {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.button3 {
+    width: 190PX;
+    background: none;
+    border: solid #1A8CF7;
+    border-radius: 10px;
+    color: 000000;
+    display: block;
+    font-size: 1.6em;
+    font-weight: bold;
+    margin: 10px auto;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+button::before,
+button::after {
+    background: #1A8CF7;
+    content: '';
+    position: absolute;
+    z-index: -1;
+}
+
+button:hover {
+    color: #FFFFFF;
+}
+
+.button3::after {
+    height: 0;
+    left: 50%;
+    top: 50%;
+    width: 0;
+}
+
+.button3:hover:after {
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.center-btn {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 190PX;
+    background-color: #1A8CF7;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}

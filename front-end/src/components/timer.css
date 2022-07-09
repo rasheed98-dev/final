@@ -1,0 +1,26 @@
+.pa {
+    font-family: monaco;
+    /* height: 50vh; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    margin-bottom: 50px;
+}
+
+.count-digit {
+    color: #ffffff;
+    background-color: #1a8cf7a6;
+    font-size: 20px;
+    padding: 10px 15px;
+    margin-left: 3px;
+    text-shadow: 0 1px 0 white;
+    border-radius: 10%;
+}
+
+.separator {
+    font-size: 20px;
+}
